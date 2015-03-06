@@ -8,6 +8,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +1 ~/test/Worker.hs
+badd +56 Worker.hs
+badd +51 Server.hs
 argglobal
 silent! argdel *
 set splitbelow splitright
@@ -17,6 +20,7 @@ wincmd t
 set winheight=1 winwidth=1
 argglobal
 enew
+file NERD_tree_1
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -24,7 +28,7 @@ setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal fen
+setlocal nofen
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
